@@ -29,16 +29,16 @@
 
 #define getLastCudaError(msg) __getLastCudaError(msg, __FILE__, __LINE__)
 
-inline void __getLastCudaError(const char *errorMessage, const char *file,
-                               const int line) {
-  const cudaError_t error_code = cudaGetLastError();
+inline void __getLastCudaError(const char* errorMessage, const char* file,
+	const int line) {
+	const cudaError_t error_code = cudaGetLastError();
 
-  if (error_code != cudaSuccess) {
-    fprintf(stderr,
-            "%s(%d) : getLastCudaError() CUDA Error :"
-            " %s : (%d) %s.\n",
-            file, line, errorMessage, static_cast<int>(error_code),
-            cudaGetErrorString(error_code));
-    exit(EXIT_FAILURE);
-  }
+	if (error_code != cudaSuccess) {
+		fprintf(stderr,
+			"%s(%d) : getLastCudaError() CUDA Error :"
+			" %s : (%d) %s.\n",
+			file, line, errorMessage, static_cast<int>(error_code),
+			cudaGetErrorString(error_code));
+		exit(EXIT_FAILURE);
+	}
 }
