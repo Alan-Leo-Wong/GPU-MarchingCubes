@@ -2,7 +2,7 @@
  * @Author: Poet 602289550@qq.com
  * @Date: 2023-03-18 11:31:45
  * @LastEditors: Poet 602289550@qq.com
- * @LastEditTime: 2023-03-27 22:27:44
+ * @LastEditTime: 2023-03-28 11:07:42
  * @FilePath: \GPUMarchingCubes\MarchingCubes.h
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
  * 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
@@ -33,11 +33,15 @@ determineVoxelKernel(const uint nVoxels, const double *d_isoVal,
                      uint *d_nVoxelVerts, uint *d_voxelCubeIndex,
                      double *d_voxelSDF, uint *d_isValidVoxel);
 
+__global__ void compactVoxels(const uint nVoxels, const uint *d_isValidVoxel,
+                              const uint *d_nValidVoxelsScan,
+                              uint *d_compactedVoxelArray);
+
 __global__ void voxelToMeshKernel(const uint nValidVoxels, const int maxVerts,
                                   const double *d_isoVal,
                                   const double3 *d_voxelSize,
                                   const double3 *d_origin, const uint3 *d_res,
-                                  const cudaTextureObject_t nVertsTex,
+                                  const uint *d_compactedVoxelArray, const cudaTextureObject_t nVertsTex,
                                   const cudaTextureObject_t triTex,
                                   uint *d_voxelCubeIndex, double *d_voxelSDF,
                                   uint *d_nVertsScanned, double3 *d_triPoints);
@@ -58,7 +62,9 @@ void freeResources();
 void launch_determineVoxelKernel(const uint &nVoxels, const double &isoVal,
                                  const uint &maxVerts);
 
-void launch_voxelToMeshKernel(const uint &maxVerts);
+void launch_compactVoxelsKernel(const int& nVoxels);
+
+void launch_voxelToMeshKernel(const uint &maxVerts, const uint &nVoxels);
 
 void writeToOBJFile(const std::string &filename);
 
