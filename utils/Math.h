@@ -1,11 +1,9 @@
 /*
- * @Author: Poet 602289550@qq.com
+ * @Author: Lei Wang leiw1006@gmail.com
  * @Date: 2023-03-28 13:13:26
- * @LastEditors: Poet 602289550@qq.com
+ * @LastEditors: Lei Wang
  * @LastEditTime: 2023-03-28 13:16:12
  * @FilePath: \GPUMarchingCubes\utils\MathHelper.h
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
- * 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 #pragma once
 #include "cuda_runtime.h"
