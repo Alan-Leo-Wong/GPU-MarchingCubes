@@ -10,4 +10,10 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
+include/
 build/
+out/
+.vs/
+.vscode/
+cmake-build-release/
+cmake-build-debug/
