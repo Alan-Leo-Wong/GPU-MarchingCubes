@@ -13,7 +13,7 @@ This repository contains a GPU-accelerated implementation of the Marching Cubes 
 - NVIDIA GPU with CUDA Compute Capability 6.0 or higher.
 - CUDA Toolkit 11.6 or higher.
 - C++ compiler compatible with the CUDA version used (C++17 and cuda_std_17 or higher).
-- CMake for building the project.
+- CMake(>=3.18) for building the project.
 
 ## Configuration
 
